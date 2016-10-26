@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html style="height: 0px;">
+<head>
+</head>
+<body>
+<div id="thdWebApp" class="ieGrad" style="height: 712px;" >
+  <app-pegging-review-header> </app-pegging-review-header>
+  <div id="messageBar">
+    Pegging Inquiry
+  </div>
+  <div id="appBody" style="min-height: 400.4px;">
+    <button class="accordion" style= "border: 1px solid #555555;" (click)="clickedSearchAreaButton($event)"><b>Search</b></button>
+    <div [hidden]=!displaySearchArea  >
+      <div id="search" class="accordianContent ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active" style="background-color: #DCDCDC ; position: relative; height: 423px; display: block; overflow: auto; padding-top: 0px; padding-bottom: 0px;" role="tabpanel">
+        <div   style= "padding-top: 89px">
+          <table align="right" width="50%" id=inputData1 style="padding-top:85px;float:left;">
+            <tr align="center">
+              <td width="auto" align="center">
+                <div>User ID: </div>
+                <input type="text" class=' posint-numeric' id="userID"  />
+              </td>
+              <td width="auto" align="center">
+                <div>Transload PO Due Date: </div>
+                <input id="TLDate" class="datefield" type="date" />
+              </td>
+            </tr>
+            <tr align="center">
+              <td width="auto" align="center">
+                <div>SOQ Request ID: </div>
+                <input type="text" class=' posint-numeric ' id="SOQNumber" onkeypress="return onlyNumbers();" />
+              </td>
+              <td width="auto" align="center">
+                <div>MVNDR: </div>
+
+                <select style="width:150px; " [ngModel]="selectedDeviceObj" (ngModelChange)="onChangeObj($event)" >
+                  <option  [ngValue]="i" *ngFor="let i of deviceObjects">{{i}} </option>
+                </select>
+              </td>
+            </tr>
+            <tr align="center">
+              <td width="auto" align="center">
+                <div>PO Number:</div>
+                <input type="text" class=' posint-numeric' id="poNumber" onkeypress="return onlyNumbers();" />
+              </td>
+              <td width="auto" align="center">
+                <div>Request Status:</div>
+                <select id="statusSelect" style="width:150px;">
+                  <option value="0" style="display:none;">none</option>
+                  <option value="1" >Uploaded</option>
+                  <option value="2" >In Containerization</option>
+                  <option value="3" >In Containerization/ In Error</option>
+                  <option value="4" >Open</option>
+                  <option value="5" >In Error</option>
+                  <option value="6" >Corrected</option>
+                  <option value="7" >Locked</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td>
+              </td>
+              <td>
+                <table align="center">
+                  <tr align="center">
+                    <td width="auto" align="center" >
+                      <div >Exclude Peg Processed</div>
+                    </td>
+                    <td>
+                      <input type="checkbox" id="processedCheck" name="Exclude Peg Processed">
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+          <div id="skuSearch" style="float:left;">
+            <div>SKU List:</div>
+            <textarea rows="15" cols="75" id="skuInput" onkeypress="return skuListRestrictions();" ></textarea>
+          </div>
+        </div>
+        <table width="100%" style= "height: 233px">
+          <tbody><tr>
+            <td align="left">
+              <button id="clearButton" class="icon icon_reset">Clear</button>
+            </td>
+            <td align="right">
+              <button (click)="clickedSearchButton($event)" id="searchButton" class="icon icon_search">Search</button>
+            </td>
+          </tr>
+          </tbody></table>
+      </div>
+    </div>
+
+    <button style= "border: 0.5px solid #555555;" (click)="clickedResultButtonArea($event)" class="accordion"><b>Results</b></button>
+    <div [hidden]=!displayResultArea style="border: 1px ridge">
+      <app1></app1>
+    </div>
+  </div>
+  <div id="copyright">Copyright © 2001-2015 Homer TLC, Inc. All Rights Reserved.</div>
+</div>
+<div id="release">Release 1.6.0.0</div>
+</body>
